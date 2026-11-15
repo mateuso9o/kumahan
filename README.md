@@ -24,9 +24,12 @@ node scripts/build-foods.ts <โฟลเดอร์ CSV ของ USDA SR Lega
 
 ## ติดตั้งบนมือถือ
 
-PWA ต้องเปิดผ่าน HTTPS ให้ deploy โฟลเดอร์ `dist/` ขึ้น hosting ฟรี (เช่น Cloudflare Pages หรือ Netlify) แล้วเปิดลิงก์บนมือถือ
+เปิด **https://mateuso9o.github.io/kumahan/** บนมือถือ แล้ว
+
 - iPhone: Safari → แชร์ → "เพิ่มไปยังหน้าจอโฮม"
-- Android: Chrome → เมนู → "ติดตั้งแอป"
+- Android: Chrome → เมนู ⋮ → "ติดตั้งแอป" หรือ "เพิ่มลงในหน้าจอหลัก"
+
+ทุกครั้งที่ push เข้า `main` GitHub Actions จะรัน test, build และอัปเดตเว็บเอง (`.github/workflows/deploy.yml`)
 
 ## แหล่งข้อมูล
 
