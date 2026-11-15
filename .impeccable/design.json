@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-16T00:00:00Z",
+  "title": "Design System: คุมอาหาร",
+  "extensions": {
+    "colorMeta": {
+      "shell-leaf": { "role": "primary", "displayName": "Leaf Shell" },
+      "action-leaf": { "role": "primary", "displayName": "Action Leaf" },
+      "page-mist": { "role": "neutral", "displayName": "Page Mist" },
+      "band-rice": { "role": "tertiary", "displayName": "Rice Gold" },
+      "band-vegetable": { "role": "tertiary", "displayName": "Vegetable Green" },
+      "band-protein": { "role": "tertiary", "displayName": "Protein Brick" },
+      "band-oil": { "role": "tertiary", "displayName": "Oil Brown" },
+      "band-salt": { "role": "tertiary", "displayName": "Salt Slate" }
+    },
+    "typographyMeta": {
+      "remaining": { "displayName": "Remaining", "purpose": "The kcal left on Today." },
+      "trend": { "displayName": "Trend", "purpose": "Trend weight on Body." }
+    },
+    "shadows": [
+      { "name": "fab", "value": "0 6px 18px -4px #173a2466", "purpose": "Only under the floating add button." }
+    ],
+    "motion": [
+      { "name": "press", "value": "150ms ease-out", "purpose": "Button press scale and background." },
+      { "name": "band-fill", "value": "400ms cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Flag band fill width change." }
+    ],
+    "breakpoints": [{ "name": "max-content", "value": "560px" }]
+  },
+  "components": [
+    {
+      "name": "Primary Button", "kind": "button", "refersTo": "button-primary", "description": "The one pressable colour.",
+      "html": "<button class=\"ds-btn-primary\">บันทึก</button>",
+      "css": ".ds-btn-primary{background:#2f7d3a;color:#fff;border:0;border-radius:10px;min-height:48px;padding:0 18px;font:600 17px Sarabun,sans-serif;transition:background-color 150ms ease-out,transform 150ms ease-out}.ds-btn-primary:hover{background:#24642d}.ds-btn-primary:active{transform:scale(.98)}.ds-btn-primary:focus-visible{outline:3px solid #1f6fd1;outline-offset:2px}"
+    },
+    {
+      "name": "Grams Field", "kind": "input", "refersTo": "input", "description": "Big numeric input for kitchen use.",
+      "html": "<label class=\"ds-field\"><span>น้ำหนัก (กรัม)</span><input inputmode=\"decimal\" value=\"200\"></label>",
+      "css": ".ds-field{display:flex;flex-direction:column;gap:6px;color:#4b5c4f;font:400 15px Sarabun,sans-serif}.ds-field input{min-height:64px;border:1px solid #d9e2d6;border-radius:10px;padding:0 14px;font:700 1.8rem Sarabun,sans-serif;color:#18221b}.ds-field input:focus{border-color:#2f7d3a;outline:2px solid #2f7d3a40}"
+    },
+    {
+      "name": "Flag Band", "kind": "custom", "description": "One band of the personal food-guide flag; fill = eaten / target.",
+      "html": "<div class=\"ds-band\" style=\"--fill:62%\"><span class=\"ds-band__fill\"></span><span class=\"ds-band__text\"><span>โปรตีน</span><span>97 / 156 g</span></span><span class=\"ds-band__text ds-band__text--on\"><span>โปรตีน</span><span>97 / 156 g</span></span></div>",
+      "css": ".ds-band{position:relative;height:54px;background:#f6dcd8;clip-path:polygon(0 0,100% 0,calc(100% - 12px) 100%,12px 100%);font:600 17px Sarabun,sans-serif}.ds-band__fill{position:absolute;inset:0 auto 0 0;width:var(--fill);background:#bf4434}.ds-band__text{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 22px;color:#18221b}.ds-band__text--on{color:#fff;clip-path:inset(0 calc(100% - var(--fill)) 0 0)}"
+    },
+    {
+      "name": "Favourite Chip", "kind": "chip", "refersTo": "chip", "description": "Log a saved meal in one tap.",
+      "html": "<button class=\"ds-chip\">★ ข้าวอกไก่</button>",
+      "css": ".ds-chip{min-height:44px;padding:0 14px;border-radius:999px;border:1px solid #d9e2d6;background:#fff;font:600 17px Sarabun,sans-serif;color:#18221b}.ds-chip:hover{background:#f7faf6}.ds-chip:focus-visible{outline:3px solid #1f6fd1;outline-offset:2px}"
+    },
+    {
+      "name": "Tab Bar", "kind": "nav", "description": "Three fixed tabs at the bottom.",
+      "html": "<nav class=\"ds-tabs\"><a aria-current=\"page\">วันนี้</a><a>อาหาร</a><a>ร่างกาย</a></nav>",
+      "css": ".ds-tabs{display:grid;grid-template-columns:repeat(3,1fr);background:#fff;border-top:1px solid #d9e2d6;font:400 .85rem Sarabun,sans-serif}.ds-tabs a{min-height:60px;display:grid;place-items:center;color:#4b5c4f}.ds-tabs a[aria-current=page]{color:#2f7d3a;font-weight:700}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The flag you fill",
+    "overview": "The app borrows the Thai Department of Health food-guide flag: an inverted triangle of food groups. Here the flag is personal: its bands are nutrients sized from the person's own targets, filling as weighed food is logged. Everything else is a calm, standard mobile tool.",
+    "keyCharacteristics": [
+      "One signature: the inverted-triangle flag on Today; every other screen is plain, familiar mobile UI.",
+      "Flat, unmodulated band colours from the food-guide flag; no gradients, no glass.",
+      "Scale contrast carries hierarchy: one giant number per screen, small labels.",
+      "Every number can be traced to its source."
+    ],
+    "rules": [
+      { "name": "The Pressable Colour Rule", "body": "Action Leaf appears only on things you can press or the current selection.", "section": "colors" },
+      { "name": "The Band Colour Rule", "body": "Band colours belong to the flag and its nutrients; they never decorate other components.", "section": "colors" },
+      { "name": "The Held Change Rule", "body": "A changed weekly target sits in a notice-yellow strip until the person taps รับทราบ.", "section": "colors" }
+    ],
+    "dos": ["Do keep one giant number per screen and let labels stay small.", "Do show where a number comes from, in plain Thai.", "Do label estimates as ประมาณ."],
+    "donts": ["Don't add calorie rings, progress rings or stacks of same-size cards.", "Don't use band colours for decoration.", "Don't use a modal where an inline panel works."]
+  }
+}
